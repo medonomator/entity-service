@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  {{>head}}
+</head>
+
+<body>
+
+  <h1>Displaying data by Entitys</h1>
+  <br>
+
+  <div class="table-entitys" border="0">
+    {{#each entitysData as |entity index| }}
+    <div class="table-column">
+      <div class="table-row table-row-name">{{index}}</div>
+      {{#each entity as |parameter| }}
+      <div class="table-row">{{parameter}}</div>
+      {{/each}}
+    </div>
+    {{/each}}
+    <div class="table-column">
+      <div class="table-row table-row-name">Итого:</div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+      <div class="table-row"></div>
+    </div>
+  </div>
+  </div>
+</body>
+
+<script src="static/js/common.js"></script>
+
+</html>
