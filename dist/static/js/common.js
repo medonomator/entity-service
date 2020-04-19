@@ -1,5 +1,3 @@
-// again
-
 // Сперва раскрасить по дефолту ячейки
 const tableSelect = Array.from(document.querySelectorAll('.table-column-select div'));
 const tableTotals = Array.from(document.querySelectorAll('.table-column-total div'));

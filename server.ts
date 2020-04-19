@@ -2,10 +2,13 @@ import * as Hapi from 'hapi';
 import * as Inert from 'inert';
 import * as Vision from 'vision';
 import { logger } from './helpers/logger';
-import { autoUpdateEntitysData } from './helpers/autoUpdateEntitysData';
 // Routes
-import entityRoutes from './routes/entitys';
+import productRoutes from './routes/product';
 import viewsRoutes from './routes/views';
+import mongoConnection from './database/mongoConnection';
+import { products } from './database/schemas/products'
+
+mongoConnection();
 
 export class Server {
   constructor(private port: string) {}
@@ -31,10 +34,8 @@ export class Server {
         },
       });
 
-      server.route([...entityRoutes, ...viewsRoutes]);
-
-      await autoUpdateEntitysData();
-
+      server.route([...productRoutes, ...viewsRoutes]);
+    
       await server.start();
       logger.info('Server running at:', server.info.uri);
     } catch (err) {
