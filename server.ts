@@ -6,7 +6,9 @@ import { logger } from './helpers/logger';
 import productRoutes from './routes/product';
 import viewsRoutes from './routes/views';
 import mongoConnection from './database/mongoConnection';
-import { products } from './database/schemas/products'
+import { products } from './database/schemas/products';
+import { seedProducts } from './database/seeds';
+import { COUNT_SEED_PRODUCT } from './config';
 
 mongoConnection();
 
@@ -34,8 +36,14 @@ export class Server {
         },
       });
 
+      const productItems = await products.find();
+
+      if (!productItems.length) {
+        await seedProducts(COUNT_SEED_PRODUCT);
+      }
+
       server.route([...productRoutes, ...viewsRoutes]);
-    
+
       await server.start();
       logger.info('Server running at:', server.info.uri);
     } catch (err) {
